@@ -1,0 +1,13 @@
+filters:
+  and:
+    - tipo == "proyecto"
+views:
+  - type: table
+    name: Por estado
+    groupBy:
+      property: estado
+      direction: ASC
+    order:
+      - file.name
+      - ámbito
+      - file.mtime

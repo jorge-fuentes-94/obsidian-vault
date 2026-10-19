@@ -1,0 +1,44 @@
+views:
+  - type: table
+    name: Inbox
+    filters:
+      and:
+        - file.inFolder("Inbox")
+    order:
+      - file.name
+      - file.ctime
+  - type: table
+    name: Recientes
+    filters:
+      and:
+        - '!file.inFolder("Rol/Recursos/D&D 5e SRD")'
+    order:
+      - file.name
+      - tipo
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
+    limit: 40
+  - type: table
+    name: Sin tipo
+    filters:
+      and:
+        - tipo.isEmpty()
+        - file.ext == "md"
+    order:
+      - file.name
+      - file.folder
+  - type: table
+    name: Publicadas recientes
+    filters:
+      and:
+        - publish == true
+    order:
+      - file.name
+      - file.folder
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
+    limit: 40

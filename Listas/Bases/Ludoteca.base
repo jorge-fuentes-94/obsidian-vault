@@ -1,0 +1,23 @@
+filters:
+  and:
+    - tipo == "juego-rol"
+views:
+  - type: table
+    name: Todos
+    order:
+      - file.name
+      - sistema
+      - lo_tengo
+      - dirigido
+      - jugado
+      - puntuación
+  - type: table
+    name: Lo ofrezco
+    filters:
+      and:
+        - lo_ofrezco == true
+    order:
+      - file.name
+      - duración
+      - jugadores
+      - tono

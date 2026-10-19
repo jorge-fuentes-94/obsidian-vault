@@ -1,0 +1,173 @@
+/* ============================================================
+   publish.css — La Guarida de Jorge
+   Sobre las clases reales de Obsidian Publish (.publish-renderer,
+   .markdown-preview-view, .site-header…) y sus variables, para que
+   funcione igual en claro y en oscuro.
+   Acento: frambuesa #c3376a (claro) · #e57aa2 (oscuro)
+   ============================================================ */
+
+/* ── Paleta ─────────────────────────────────────────────── */
+.theme-light {
+  --background-primary: #fbfafb;
+  --background-primary-alt: #f4f1f4;
+  --background-secondary: #f4f1f4;
+  --background-modifier-border: #e3dde3;
+  --text-normal: #1f1a23;
+  --text-muted: #655c6b;
+  --text-faint: #9a919f;
+  --text-accent: #ad2d5c;
+  --text-accent-hover: #8e2149;
+  --interactive-accent: #ad2d5c;
+  --interactive-accent-hover: #8e2149;
+  --code-background: #f1edf2;
+  --code-normal: #8e2149;
+  --tag-background: #f6e3ea;
+  --tag-color: #ad2d5c;
+}
+.theme-dark {
+  --background-primary: #17141a;
+  --background-primary-alt: #1f1b24;
+  --background-secondary: #1f1b24;
+  --background-modifier-border: #352e3c;
+  --text-normal: #ece7f0;
+  --text-muted: #a79dad;
+  --text-faint: #7d7383;
+  --text-accent: #e57aa2;
+  --text-accent-hover: #f09ab9;
+  --interactive-accent: #e57aa2;
+  --interactive-accent-hover: #f09ab9;
+  --code-background: #26212c;
+  --code-normal: #f09ab9;
+  --tag-background: #3a2230;
+  --tag-color: #f09ab9;
+}
+
+/* ── Tipografía y medida ────────────────────────────────── */
+body {
+  --font-text-theme: Georgia, "Source Serif 4", "Times New Roman", serif;
+  --font-interface-theme: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-monospace-theme: Consolas, Menlo, "Cascadia Mono", monospace;
+  --file-line-width: 720px;
+  --line-height-normal: 1.7;
+  --h1-size: 2.1em;
+  --h2-size: 1.5em;
+  --h3-size: 1.2em;
+}
+
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.page-header {
+  font-family: var(--font-interface-theme);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.markdown-preview-view h2 {
+  margin-top: 2em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.markdown-preview-view h3 { margin-top: 1.6em; }
+
+/* ── Cabecera y barra lateral ───────────────────────────── */
+.site-header {
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.site-header .site-header-text,
+.site-body-left-column-site-name {
+  font-family: var(--font-interface-theme);
+  font-weight: 700;
+  color: var(--text-accent);
+}
+.site-body-left-column .tree-item-self.mod-active {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+/* ── Enlaces ────────────────────────────────────────────── */
+.markdown-preview-view a.internal-link {
+  color: var(--text-accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-accent) 35%, transparent);
+}
+.markdown-preview-view a.internal-link:hover {
+  border-bottom-color: var(--text-accent);
+}
+/* Enlaces a notas no publicadas: discretos, sin aspecto de enlace roto */
+.markdown-preview-view a.internal-link.is-unresolved {
+  color: var(--text-muted);
+  border-bottom: 1px dotted var(--text-faint);
+  opacity: 1;
+}
+
+/* ── Tablas ─────────────────────────────────────────────── */
+.markdown-preview-view table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95em;
+}
+.markdown-preview-view th {
+  font-family: var(--font-interface-theme);
+  font-size: 0.85em;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: var(--text-muted);
+  background: var(--background-primary-alt);
+}
+.markdown-preview-view th,
+.markdown-preview-view td {
+  border: 1px solid var(--background-modifier-border);
+  padding: 0.45em 0.75em;
+}
+
+/* ── Código ─────────────────────────────────────────────── */
+.markdown-preview-view pre {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+}
+
+/* ── Tags ───────────────────────────────────────────────── */
+.markdown-preview-view a.tag {
+  background: var(--tag-background);
+  color: var(--tag-color);
+  border-radius: 999px;
+  padding: 0.1em 0.6em;
+  font-size: 0.85em;
+  text-decoration: none;
+}
+
+/* ── Callouts propios ───────────────────────────────────── */
+/* [!app]: paneles que solo tienen sentido dentro de Obsidian */
+.callout[data-callout="app"] { display: none; }
+/* [!secret]: secretos de máster (por si alguno se publica sin querer) */
+.callout[data-callout="secret"] { display: none; }
+/* [!todo]: fichas por completar */
+.callout[data-callout="todo"] {
+  --callout-color: 154, 92, 0;
+  font-size: 0.9em;
+}
+
+/* ── Portada (cssclasses: inicio) ───────────────────────── */
+.markdown-preview-view.inicio h2:first-of-type {
+  font-size: 2.4em;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.markdown-preview-view.inicio h2:first-of-type + p {
+  color: var(--text-muted);
+  margin-top: 0.2em;
+}
+.markdown-preview-view.inicio ul {
+  list-style: none;
+  padding-left: 0;
+}
+.markdown-preview-view.inicio ul > li {
+  padding: 0.35em 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* ── Móvil ──────────────────────────────────────────────── */
+@media (max-width: 750px) {
+  body { --file-line-width: 100%; }
+  .markdown-preview-view table { display: block; overflow-x: auto; }
+}

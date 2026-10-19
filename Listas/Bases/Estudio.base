@@ -1,0 +1,35 @@
+filters:
+  and:
+    - file.inFolder("Notas")
+views:
+  - type: table
+    name: Por módulo
+    filters:
+      and:
+        - "!módulo.isEmpty()"
+    groupBy:
+      property: módulo
+      direction: ASC
+    order:
+      - file.name
+      - origen
+      - actualizado
+  - type: table
+    name: Por origen
+    groupBy:
+      property: origen
+      direction: ASC
+    order:
+      - file.name
+      - módulo
+      - tags
+  - type: table
+    name: Recientes
+    order:
+      - file.name
+      - origen
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
+    limit: 30

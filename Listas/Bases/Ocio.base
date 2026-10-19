@@ -1,0 +1,61 @@
+filters:
+  and:
+    - tipo == "ocio"
+views:
+  - type: cards
+    name: Todo
+    order:
+      - file.name
+      - subtipo
+      - estado
+      - puntuación
+    sort:
+      - property: file.mtime
+        direction: DESC
+    image: note.portada
+  - type: table
+    name: En proceso
+    filters:
+      and:
+        - estado == "en proceso"
+    order:
+      - file.name
+      - subtipo
+      - plataforma
+  - type: table
+    name: Pendientes
+    filters:
+      and:
+        - estado == "pendiente"
+    groupBy:
+      property: subtipo
+      direction: ASC
+    order:
+      - file.name
+      - año
+      - géneros
+  - type: table
+    name: Recomendadas
+    filters:
+      and:
+        - valoración.contains("recomendada")
+    order:
+      - file.name
+      - subtipo
+      - puntuación
+    sort:
+      - property: puntuación
+        direction: DESC
+  - type: table
+    name: Por puntuación
+    filters:
+      and:
+        - "!puntuación.isEmpty()"
+    order:
+      - file.name
+      - subtipo
+      - valoración
+      - puntuación
+    sort:
+      - property: puntuación
+        direction: DESC

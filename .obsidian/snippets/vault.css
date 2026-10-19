@@ -1,0 +1,85 @@
+/* vault.css — color propio de Cámara General sobre Minimal */
+
+/* ── Paleta ─────────────────────────────────────────────── */
+body {
+  --cg-rosa: #c3376a; --cg-ambar: #d9822b; --cg-verde: #3d9a6a; --cg-azul: #2f7fbf;
+  --cg-violeta: #7a5cc4; --cg-teal: #1f9e9a; --cg-oro: #c79a1e;
+}
+.theme-dark {
+  --cg-rosa: #e57aa2; --cg-ambar: #f0a35e; --cg-verde: #6cc49a; --cg-azul: #73b3ec;
+  --cg-violeta: #a991ec; --cg-teal: #5cc9c4; --cg-oro: #e5c25a;
+}
+
+/* ── Encabezados en color ───────────────────────────────── */
+body {
+  --h1-color: var(--cg-rosa);
+  --h2-color: var(--cg-violeta);
+  --h3-color: var(--cg-azul);
+  --h4-color: var(--cg-teal);
+  --h5-color: var(--cg-verde);
+  --h6-color: var(--cg-ambar);
+  --inline-title-color: var(--cg-rosa);
+}
+.markdown-rendered h2, .HyperMD-header-2 { border-bottom: 2px solid color-mix(in srgb, var(--cg-violeta) 25%, transparent); padding-bottom: 0.1em; }
+
+/* ── Carpetas con color en el explorador (incluye subcarpetas) ── */
+body { --cg-gris: #7d8a99; }
+.theme-dark { --cg-gris: #a3b0bf; }
+.nav-folder-title[data-path^="00 - Inicio"] { --cg-c: var(--cg-rosa); }
+.nav-folder-title[data-path^="Inbox"]       { --cg-c: var(--cg-ambar); }
+.nav-folder-title[data-path^="Notas"]       { --cg-c: var(--cg-azul); }
+.nav-folder-title[data-path^="Listas"]      { --cg-c: var(--cg-teal); }
+.nav-folder-title[data-path^="Rol"]         { --cg-c: var(--cg-oro); }
+.nav-folder-title[data-path^="Ocio"]        { --cg-c: var(--cg-violeta); }
+.nav-folder-title[data-path^="Proyectos"]   { --cg-c: var(--cg-ambar); }
+.nav-folder-title[data-path^="Perfil"]      { --cg-c: var(--cg-verde); }
+.nav-folder-title[data-path^="Personal"]    { --cg-c: var(--cg-rosa); }
+.nav-folder-title[data-path^="Adjuntos"]    { --cg-c: var(--cg-gris); }
+.nav-folder-title[data-path^="Sistema"]     { --cg-c: var(--cg-gris); }
+.nav-folder-title[data-path] { color: var(--cg-c, var(--nav-item-color)); }
+.nav-folder-title[data-path] .iconize-icon, .nav-folder-title[data-path] svg { color: var(--cg-c, currentColor); }
+.nav-files-container > div > .nav-folder > .nav-folder-title {
+  font-weight: 600;
+  border-left: 3px solid var(--cg-c, transparent);
+  padding-left: 6px;
+}
+
+/* ── Tags y enlaces ─────────────────────────────────────── */
+body {
+  --tag-background: color-mix(in srgb, var(--cg-violeta) 14%, transparent);
+  --tag-color: var(--cg-violeta);
+  --tag-border-width: 0;
+  --link-color: var(--cg-rosa);
+  --link-unresolved-color: var(--text-muted);
+}
+
+/* ── Negrita y resaltado con un toque de color ──────────── */
+body { --bold-color: color-mix(in srgb, var(--text-normal) 75%, var(--cg-rosa)); }
+.markdown-rendered mark, .cm-highlight { background: color-mix(in srgb, var(--cg-oro) 30%, transparent); }
+
+/* ── Callouts propios ───────────────────────────────────── */
+.callout[data-callout="app"]    { --callout-color: 195, 55, 106; --callout-icon: lucide-layout-dashboard; }
+.callout[data-callout="secret"] { --callout-color: 122, 92, 196; --callout-icon: lucide-eye-off; }
+.callout[data-callout="todo"]   { --callout-color: 217, 130, 43; --callout-icon: lucide-pencil; }
+
+/* ── Notas de rol (cssclasses: rol): aire de manual ─────── */
+.rol .inline-title, .rol h2, .rol .HyperMD-header-2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+.rol { --h2-color: var(--cg-oro); --inline-title-color: var(--cg-oro); }
+.rol blockquote { font-style: italic; border-left-color: var(--cg-oro); }
+
+/* ── Portadas ───────────────────────────────────────────── */
+.inicio .inline-title { display: none; }
+.inicio h2 { --h2-color: var(--cg-rosa); }
+
+/* ── Listas con portadas (cssclasses: portadas) ─────────── */
+.portadas img[alt="portada"] {
+  float: right;
+  margin: 0 0 0.8em 1.2em;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.portadas h3 { clear: both; }

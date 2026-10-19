@@ -1,0 +1,71 @@
+filters:
+  and:
+    - file.inFolder("Rol/Campañas")
+views:
+  - type: table
+    name: Sesiones
+    filters:
+      and:
+        - tipo == "sesión"
+    groupBy:
+      property: campaña
+      direction: ASC
+    order:
+      - file.name
+      - número
+      - fecha_partida
+      - descanso_largo
+    sort:
+      - property: número
+        direction: DESC
+  - type: table
+    name: PNJ
+    filters:
+      and:
+        - tipo == "pnj"
+    groupBy:
+      property: campaña
+      direction: ASC
+    order:
+      - file.name
+      - afiliación
+      - papel
+      - ubicación
+  - type: table
+    name: Lugares
+    filters:
+      and:
+        - tipo == "lugar"
+    groupBy:
+      property: campaña
+      direction: ASC
+    order:
+      - file.name
+      - ubicación
+  - type: table
+    name: Facciones
+    filters:
+      and:
+        - tipo == "facción"
+    order:
+      - file.name
+      - campaña
+  - type: table
+    name: Tramas
+    filters:
+      and:
+        - tipo == "trama"
+    order:
+      - file.name
+      - campaña
+      - estado
+  - type: table
+    name: Fichas vacías
+    filters:
+      and:
+        - file.size < 400
+        - tipo != "sesión"
+    order:
+      - file.name
+      - campaña
+      - tipo
